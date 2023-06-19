@@ -1,0 +1,164 @@
+*{
+    font-family: 'montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient( to bottom right, rgb(29, 198, 254), rgb(3, 62, 82));
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    font-weight: bolder;
+    margin-bottom: 10px;
+    font-size: 2.15em;
+}
+
+.container{
+    width: 50vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-container{
+    width: 90%;
+    height: 90vh;
+}
+
+#some-style{
+    border-radius: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+    height: 50px;
+    background-color: blue;
+    font-size: 5em;
+    color: rgb(185, 220, 246);
+}
+
+#some-style::after{
+    content: 'App';
+    color: white;
+    font-size: 0.2em;
+    font-weight: bold;
+    position: absolute;
+    top: 60px;
+    right: 30%;
+}
+
+#sub-sub-container>p{
+    font-size: 0.5em;
+    text-align: center;
+    margin-bottom: 10px;
+    color: rgb(4, 157, 177);
+}
+
+.main-container{
+    width: 100%;
+    display: flex;
+    gap: 0.5em;
+}
+
+.main-container>input{
+    flex-basis: 90%;
+    font-size: 0.5em;
+    padding: 5px;
+    height: 5vh;
+    font-size: 0.8em;
+}
+
+.main-container>button{
+    flex-basis: 10%;
+}
+
+#todo-container{
+    margin-top: 10px;
+    width: 100%;
+    height: 80%;
+    overflow-y: auto;
+}
+
+#clear-all{
+    background-color: rgb(155, 3, 202);
+    border: none;
+    width: 100%;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+#clear-all:hover{
+    transform: translateY(5px);
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    background-color: rgb(155, 3, 202);
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: yellow;
+}
+
+.todo-text{
+    margin-top: 5px;
+    background-color: rgb(150, 230, 232);
+    height: 5vh;
+}
+
+.todo-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.delete-btn{
+    font-size: 0.8em;
+    background-color: rgb(4, 171, 201);
+    border: none;
+    padding: 3px;
+    border-radius: 1px;
+    color: white;
+}
+
+.delete-btn:hover{
+    cursor: pointer;
+}
+
+#addTodo{
+    color: white;
+    background-color: rgb(155, 3, 202);
+    border: none;
+    font-weight: bold;
+    border-radius: 2px;
+    font-size: 1.15em;
+}
+
+@media screen  and (max-width:900px){
+    .container{
+        width: 80vw;
+    }
+       
+}
+
+@media screen and (max-width: 475px) {
+    .container{
+        width: 100vw;
+    }
+    
+}
+
