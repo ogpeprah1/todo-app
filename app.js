@@ -4,12 +4,11 @@ const todo_container = document.getElementById('todo-container');
 const sub_sub_container = document.getElementById('sub-sub-container');
 
 addItemBtn.onclick = () => {
-
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item');
 
     const todoText = document.createElement('p');
-    todoItem.classList.add('todo-text')
+    todoText.classList.add('todo-text');
     todoText.innerText = inputItem.value;
 
     const deleteBtn = document.createElement('button');
@@ -17,41 +16,40 @@ addItemBtn.onclick = () => {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', () => {
         todoItem.remove();
+        updateLocalStorage();
     });
-
-    if(inputItem.value == ''){
-        removeEventListener();
-    }
-
-    // sub_sub_container.style.display = 'none';
 
     todoItem.appendChild(todoText);
     todoItem.appendChild(deleteBtn);
 
     todo_container.appendChild(todoItem);
 
-    
     inputItem.value = ''; // Clear the input field after adding the todo
 
-    updateDivState();
+    updateLocalStorage();
 };
 
 window.addEventListener("load", function() {
-  let notes = localStorage.getItem("InputRecords");
-  if(notes){
-    todo_container.innerHTML = notes;
-  }
-  
+    let notes = localStorage.getItem("InputRecords");
+    if (notes) {
+        todo_container.innerHTML = notes;
+        const deleteButtons = document.getElementsByClassName('delete-btn');
+        for (let i = 0; i < deleteButtons.length; i++) {
+            deleteButtons[i].addEventListener('click', () => {
+                deleteButtons[i].parentNode.remove();
+                updateLocalStorage();
+            });
+        }
+    }
 });
 
-function updateDivState() {
-  localStorage.setItem("InputRecords", todo_container.innerHTML);
+function updateLocalStorage() {
+    localStorage.setItem("InputRecords", todo_container.innerHTML);
 }
 
-
-//clear localstorage
-const clearList = document.getElementById('clear-all')
-
-clearList.onclick = function(){
-    localStorage.clear();
-}
+// Clear local storage and the todo_container div
+const clearList = document.getElementById('clear-all');
+clearList.onclick = function () {
+    localStorage.removeItem('InputRecords');
+    todo_container.innerHTML = '';
+};
