@@ -122,6 +122,16 @@ h1{
     height: 5vh;
     background-color: rgb(150, 230, 232);}
 
+.edit-btn{
+    font-size: 0.8em;
+    background-color: rgb(4, 171, 201);
+    border: none;
+    padding: 3px;
+    border-radius: 1px;
+    color: white;
+    margin-left: 4px;
+}
+
 .delete-btn{
     font-size: 0.8em;
     background-color: rgb(4, 171, 201);
@@ -129,10 +139,15 @@ h1{
     padding: 3px;
     border-radius: 1px;
     color: white;
+    margin-left: 4px;
 }
 
-.delete-btn:hover{
+.format-btns:hover{
     cursor: pointer;
+}
+
+.container_delete_edit{
+    width: fit-content;
 }
 
 #addTodo{
