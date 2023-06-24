@@ -1,12 +1,22 @@
 const addItemBtn = document.getElementById('addTodo');
 const inputItem = document.getElementById('inputField');
 const todo_container = document.getElementById('todo-container');
-const sub_sub_container = document.getElementById('sub-sub-container');
-
 
 addItemBtn.onclick = () => {
     const todoItem = document.createElement('div');
-    todoItem.classList.add('todo-item');
+    todoItem.classList.add('todo-item'); const todoItem_sub_container = document.createElement('div')
+    //todoItem_sub_container.classList.add('todo-item__subContainer')
+    
+    const checkIfComplete = document.createElement('input')
+    checkIfComplete.type = 'checkbox'
+
+    checkIfComplete.onclick = () => {
+        checkIfComplete.parentNode.remove()
+        updateLocalStorage()
+        editLocalStorage()
+    }
+
+
 
     const todoText = document.createElement('p');
     todoText.classList.add('todo-text');
@@ -33,9 +43,12 @@ addItemBtn.onclick = () => {
             todoItem.appendChild(container_delete_edit)
             inputItem.value = ''
             addItemBtn.innerText = '+'
+            editLocalStorage();
         }
     }
 
+
+    //creating a delete and edit button div
     const container_delete_edit = document.createElement('div')
     container_delete_edit.classList.add('container_delete_edit')
 
@@ -43,9 +56,13 @@ addItemBtn.onclick = () => {
     container_delete_edit.appendChild(editBtn)
 
 
+
+    //appending the element to the containers
+    todoItem.appendChild(checkIfComplete)
     todoItem.appendChild(todoText);
     todoItem.appendChild(container_delete_edit)
     
+    //appending todoItem to the todo_container
     todo_container.appendChild(todoItem);
 
     inputItem.value = ''; // Clear the input field after adding the todo
@@ -54,6 +71,8 @@ addItemBtn.onclick = () => {
     updateLocalStorage();
     editLocalStorage()
 };
+
+
 
 window.addEventListener("load", function() {
     let notes = localStorage.getItem("InputRecords");
@@ -74,7 +93,8 @@ window.addEventListener("load", function() {
             editParent[i].addEventListener('click', () => {
                 const ParentContainer = editParent[i].parentNode
                 const Container_parentContainer = ParentContainer.parentNode
-                const firstChild = Container_parentContainer.firstChild
+                const firstChild = Container_parentContainer.firstChild.nextSibling
+                
                 inputItem.value =  firstChild.innerText
                 addItemBtn.innerText = 'save'
 
@@ -87,8 +107,12 @@ window.addEventListener("load", function() {
                 }                
             });
         }
+
+        const checkParent = document.querySelector(`input:type['checkbox']`)
+       console.log(checkParent);
     }
 });
+
 
 function updateLocalStorage() {
     localStorage.setItem("InputRecords", todo_container.innerHTML);
@@ -97,6 +121,7 @@ function updateLocalStorage() {
 function editLocalStorage(){
     localStorage.setItem('InputRecords', todo_container.innerHTML)
 }
+
 
 // Clear local storage and the todo_container div
 const clearList = document.getElementById('clear-all');

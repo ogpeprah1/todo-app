@@ -43,6 +43,10 @@ h1{
     color: rgb(185, 220, 246);
 }
 
+.done{
+    display: none;
+}
+
 #some-style::after{
     content: 'App';
     color: white;
@@ -53,12 +57,6 @@ h1{
     right: 30%;
 }
 
-#sub-sub-container>p{
-    font-size: 0.5em;
-    text-align: center;
-    margin-bottom: 10px;
-    color: rgb(4, 157, 177);
-}
 
 .main-container{
     width: 100%;
