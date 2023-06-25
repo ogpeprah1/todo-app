@@ -3,6 +3,7 @@ const inputItem = document.getElementById('inputField');
 const todo_container = document.getElementById('todo-container');
 
 addItemBtn.onclick = () => {
+    var timeOut;
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item'); const todoItem_sub_container = document.createElement('div')
     //todoItem_sub_container.classList.add('todo-item__subContainer')
@@ -11,9 +12,21 @@ addItemBtn.onclick = () => {
     checkIfComplete.type = 'checkbox'
 
     checkIfComplete.onclick = () => {
-        checkIfComplete.parentNode.remove()
-        updateLocalStorage()
-        editLocalStorage()
+        if(todoText.style.textDecoration == ''){
+            todoText.style.textDecoration = 'line-through'
+
+            timeOut = setTimeout(() => {
+                checkIfComplete.parentNode.remove()
+                updateLocalStorage()
+                editLocalStorage()
+            }, 3000);
+        }
+        else{
+            todoText.style.textDecoration =''
+            clearTimeout(timeOut)
+        }
+
+        
     }
 
 
